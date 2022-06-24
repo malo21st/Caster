@@ -1,6 +1,7 @@
 import streamlit as st
 from google.oauth2 import service_account
 from gsheetsdb import connect
+import pandas as pd
 
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
@@ -25,3 +26,6 @@ rows = run_query(f'SELECT * FROM "{sheet_url}"')
 # Print results.
 for row in rows:
     st.write(f"{row.title} {row.text: >10s}")
+    
+df = pd.DataFrame(rows, columns=["title", "text", "tag"])
+st.dataframe(df)
