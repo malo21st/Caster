@@ -30,6 +30,6 @@ st.title("Twit : easy tweet apli")
 
 st.dataframe(df)
 
-message = st.selectbox("Select message.", titles, disabled=True)
+message = st.selectbox("Select message.", titles)
 
 st.write("tweet title:", message)
