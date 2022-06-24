@@ -24,7 +24,7 @@ df = pd.DataFrame(rows, columns=["title", "text", "tag"])
 df_index = df.index
 
 # Print results.
-st.title("Twit : easy tweet apli")
+st.title("Caster - tweet so easy -")
 
 st.dataframe(df)
 
