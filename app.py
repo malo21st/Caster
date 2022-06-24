@@ -70,7 +70,7 @@ message = st.text_area("edit message.", value=init_msg) #, height=100)
 if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
     # Upload media to Twitter APIv1.1
-    ret = api.media_upload(picture_data)
+    ret = api.media_upload(filename="dummy", file=picture_data)
 
     # Attach media to tweet
     api.update_status(media_ids=[ret.media_id_string], status=message)
