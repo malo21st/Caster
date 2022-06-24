@@ -1,2 +1,2 @@
 gsheetsdb
-tweepy
+tweepy = 4.10.0
