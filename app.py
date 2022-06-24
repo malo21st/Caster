@@ -3,7 +3,7 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
 import tweepy
-from io import BytesIO
+from io import BytesIO, BufferedReader
 from PIL import Image
 
 consumer_key    = st.secrets["API_KEY"]
@@ -59,7 +59,7 @@ if picture_data:
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)
-    fp = io.BufferedReader(b)
+    fp = BufferedReader(b)
     
 st.dataframe(df)
 
