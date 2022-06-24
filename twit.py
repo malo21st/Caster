@@ -30,6 +30,6 @@ st.title("Twit : easy tweet apli")
 
 st.dataframe(df)
 
-message_index = st.radio("Select message.", df_index)
+message_index = st.radio("Select message.", df_index, horizontal=True)
 
-st.write("tweet title:", df[message_index])
+st.write("tweet title:", df.loc[message_index, :])
