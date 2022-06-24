@@ -23,13 +23,13 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 df = pd.DataFrame(rows, columns=["title", "text", "tag"])
-titles = df['title']
+df_index = df.index
 
 # Print results.
 st.title("Twit : easy tweet apli")
 
 st.dataframe(df)
 
-message = st.selectbox("Select message.", titles)
+message_index = st.radio("Select message.", df_index)
 
-st.write("tweet title:", message)
+st.write("tweet title:", df[message_index])
