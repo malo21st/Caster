@@ -22,10 +22,14 @@ def run_query(query):
 
 sheet_url = st.secrets["private_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
+df = pd.DataFrame(rows, columns=["title", "text", "tag"])
+titles = df['title']
 
 # Print results.
-for row in rows:
-    st.write(f"{row.title} {row.text: >10s}")
-    
-df = pd.DataFrame(rows, columns=["title", "text", "tag"])
+st.title("Twit : easy tweet apli")
+
 st.dataframe(df)
+
+message = st.selectbox("Select message.", titles)
+
+st.write("tweet title:" message)
