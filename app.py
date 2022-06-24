@@ -72,6 +72,6 @@ message = st.text_area("edit message.", value=init_msg) #, height=100)
 if st.button('Cast tweet'):
     if picture_data:
         media = api.media_upload(filename="dummy.png", file=fp)
-        api.update_status(media_ids=[media.media_id], status=message)
+        api.update_status(message, media_ids=[media.media_id])
     else:
-        api.update_status(status=message)
+        api.update_status(message)
