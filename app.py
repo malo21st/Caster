@@ -55,11 +55,11 @@ picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     st.image(picture_data)
     # Save image in-memory
-#     im = Image.open(picture_data)
-#     b = BytesIO()
-#     im.save(b, "PNG")
-#     b.seek(0)
-#     fp = BufferedReader(b)
+    im = Image.open(picture_data)
+    b = BytesIO()
+    im.save(b, "PNG")
+    b.seek(0)
+    fp = BufferedReader(b)
     
 st.dataframe(df)
 
@@ -70,7 +70,7 @@ message = st.text_area("edit message.", value=init_msg) #, height=100)
 if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
     # Upload media to Twitter APIv1.1
-    ret = api.media_upload(filename="dummy", file=picture_data)
+    ret = api.media_upload(filename="dummy", file=fp)
 
     # Attach media to tweet
     api.update_status(media_ids=[ret.media_id_string], status=message)
