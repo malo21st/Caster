@@ -3,6 +3,8 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import pandas as pd
 import tweepy
+from io import BytesIO
+from PIL import Image
 
 ## create Client
 def ClientInfo():
@@ -36,8 +38,12 @@ df = pd.DataFrame(rows, columns=["title", "text", "tag"])
 df_index = df.index
 
 # Print results.
-st.title("Caster - tweet so easy -")
 
+
+st.title("Caster - tweet so easy -")
+picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg'])
+if picture_data:
+    st.image(picture_data)
 st.dataframe(df)
 
 msg_idx = st.radio("Select message.", df_index, horizontal=True)
