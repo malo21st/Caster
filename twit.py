@@ -12,9 +12,7 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 conn = connect(credentials=credentials)
 
-# Perform SQL query on the Google Sheet.
-# Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)
+@st.cache()
 def run_query(query):
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
@@ -32,5 +30,5 @@ st.dataframe(df)
 
 msg_idx = st.radio("Select message.", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n{df.loc[msg_idx, 'tag']}"
-message = st.text_area("edit message.", value=init_msg, height=100)
+message = st.text_area("edit message.", value=init_msg) #, height=100)
 st.write(message)
