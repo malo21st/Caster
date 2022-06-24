@@ -30,6 +30,7 @@ st.title("Twit : easy tweet apli")
 
 st.dataframe(df)
 
-message_index = st.radio("Select message.", df_index, horizontal=True)
-
-st.write("tweet title:", df.loc[message_index, :])
+msg_idx = st.radio("Select message.", df_index, horizontal=True)
+init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n{df.loc[msg_idx, 'tag']}"
+message = st.text_area("edit message.", value=init_msg)
+st.write(message)
