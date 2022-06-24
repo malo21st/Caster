@@ -32,5 +32,5 @@ st.dataframe(df)
 
 msg_idx = st.radio("Select message.", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n{df.loc[msg_idx, 'tag']}"
-message = st.text_area("edit message.", value=init_msg)
+message = st.text_area("edit message.", value=init_msg, height=50)
 st.write(message)
