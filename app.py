@@ -53,9 +53,9 @@ df_index = df.index
 st.title("Caster - tweet so easy -")
 picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
-    st.image(picture_data)
-    # Save image in-memory
     im = Image.open(picture_data)
+    st.image(im)
+    # Save image in-memory
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)
