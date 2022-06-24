@@ -55,9 +55,8 @@ picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     st.image(picture_data)
     # Save image in-memory
-    im = Image.fromarray(picture_data)
     b = BytesIO()
-    im.save(b, "PNG")
+    picture_data.save(b, "PNG")
     b.seek(0)
     
     
