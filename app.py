@@ -59,6 +59,7 @@ if picture_data:
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)
+    fp = io.BufferedReader(b)
     
 st.dataframe(df)
 
@@ -69,7 +70,7 @@ message = st.text_area("edit message.", value=init_msg) #, height=100)
 if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
     # Upload media to Twitter APIv1.1
-    ret = api.media_upload(filename="dummy_string", file=b)
+    ret = api.media_upload(filename="dummy_string", file=fp)
 
     # Attach media to tweet
     api.update_status(media_ids=[ret.media_id_string], status=message)
