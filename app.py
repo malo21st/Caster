@@ -5,7 +5,6 @@ import pandas as pd
 import tweepy
 
 ## create Client
-@st.cache()
 def ClientInfo():
     client = tweepy.Client(bearer_token    = st.secrets["BEARER_TOKEN"],
                            consumer_key    = st.secrets["API_KEY"],
