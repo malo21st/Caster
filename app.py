@@ -53,11 +53,11 @@ df_index = df.index
 st.title("Caster - tweet so easy -")
 picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
-    im = Image.open(picture_data)
-    st.image(im)
+    img = Image.open(picture_data)
+    st.image(img)
     # Save image in-memory
     b = BytesIO()
-    im.save(b, "PNG")
+    img.save(b, "PNG")
     b.seek(0)
     fp = BufferedReader(b)
     
@@ -71,7 +71,7 @@ if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
 #     api.update_status_with_media(status = message, filename="dummy", file = fp)
     # Upload media to Twitter APIv1.1
-    ret = api.media_upload(filename="dummy", file=fp)
+    ret = api.media_upload(filename="dummy.png", file=fp)
 
     # Attach media to tweet
     api.update_status(media_ids=[ret.media_id_string], status=message)
