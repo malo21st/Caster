@@ -41,7 +41,7 @@ df_index = df.index
 
 
 st.title("Caster - tweet so easy -")
-picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'PNG', 'JPG'])
+picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'PNG', 'JPG', 'jpeg'])
 if picture_data:
     st.image(picture_data)
 st.dataframe(df)
