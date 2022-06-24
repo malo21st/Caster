@@ -32,4 +32,4 @@ st.dataframe(df)
 
 message = st.selectbox("Select message.", titles)
 
-st.write("tweet title:" message)
+st.write("tweet title:", message)
