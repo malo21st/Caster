@@ -71,7 +71,7 @@ if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
 #     api.update_status_with_media(status = message, filename="dummy", file = fp)
     # Upload media to Twitter APIv1.1
-    ret = api.media_upload(filename="dummy", file=b)
+    ret = api.media_upload(filename="dummy", file=fp)
 
     # Attach media to tweet
     api.update_status(media_ids=[ret.media_id_string], status=message)
