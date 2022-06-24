@@ -23,7 +23,7 @@ access_token_secret = st.secrets["ACCESS_TOKEN_SECRET"]
 # client = ClientInfo()
 
 # OAuth process, using the keys and tokens
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
  
 # Creation of the actual interface, using authentication
@@ -69,9 +69,9 @@ message = st.text_area("edit message.", value=init_msg) #, height=100)
 
 if st.button('Cast tweet'):
 #      client.create_tweet(text=message)
-    api.update_status_with_media(status = message, filename="dummy", file = fp)
-#     # Upload media to Twitter APIv1.1
-#     ret = api.media_upload(filename="dummy", file=fp)
+#     api.update_status_with_media(status = message, filename="dummy", file = fp)
+    # Upload media to Twitter APIv1.1
+    ret = api.media_upload(filename="dummy", file=fp)
 
-#     # Attach media to tweet
-#     api.update_status(media_ids=[ret.media_id_string], status=message)
+    # Attach media to tweet
+    api.update_status(media_ids=[ret.media_id_string], status=message)
