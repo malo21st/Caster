@@ -68,10 +68,8 @@ init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n{df.loc[msg_
 message = st.text_area("edit message.", value=init_msg) #, height=100)
 
 if st.button('Cast tweet'):
-#      client.create_tweet(text=message)
-#     api.update_status_with_media(status = message, filename="dummy", file = fp)
-    # Upload media to Twitter APIv1.1
-    media = api.media_upload(filename="dummy.png", file=fp)
-
-    # Attach media to tweet
-    api.update_status(media_ids=[media.media_id], status=message)
+    if picture_data:
+        media = api.media_upload(filename="dummy.png", file=fp)
+        api.update_status(media_ids=[media.media_id], status=message)
+    else:
+        api.update_status(status=message)
