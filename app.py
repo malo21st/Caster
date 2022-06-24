@@ -55,10 +55,10 @@ picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     st.image(picture_data)
     # Save image in-memory
+    im = Image.open(picture_data)
     b = BytesIO()
-    picture_data.save(b, "PNG")
+    im.save(b, "PNG")
     b.seek(0)
-    
     
 st.dataframe(df)
 
