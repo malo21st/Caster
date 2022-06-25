@@ -53,13 +53,12 @@ df_index = df.index
 
 # Print results.
 st.title("Caster - tweet so easy -")
-picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
+picture_data = st.file_uploader("Select a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     img = Image.open(picture_data)
     #リサイズ&圧縮
     width, height = img.size
     img_resize = img.resize((250, int(height / width * 250)))
-#     img_p = img_resize.convert('P')
     #写真表示
     st.image(img_resize)
     # Save image in-memory
@@ -70,9 +69,9 @@ if picture_data:
     
 st.dataframe(df)
 
-msg_idx = st.radio("Select message.", df_index, horizontal=True)
-init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n{df.loc[msg_idx, 'tag']}"
-message = st.text_area("edit message.", value=init_msg, height=200)
+msg_idx = st.radio("Select tweet.", df_index, horizontal=True)
+init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
+message = st.text_area("edit tweet.", value=init_msg, height=200)
 
 if st.button('Cast tweet'):
     if picture_data:
