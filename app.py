@@ -56,10 +56,15 @@ st.title("Caster - tweet so easy -")
 picture_data = st.file_uploader("Choose a picture", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     img = Image.open(picture_data)
-    st.image(img)
+    #リサイズ&圧縮
+    width, height = img.size
+    img_resize = img.resize((250, int(height / width * 250)))
+    img_p = img_risize.convert('P')
+    #写真表示
+    st.image(img_p)
     # Save image in-memory
     b = BytesIO()
-    img.save(b, "PNG")
+    img_p.save(b, "PNG")
     b.seek(0)
     fp = BufferedReader(b)
     
