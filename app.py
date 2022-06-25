@@ -59,12 +59,12 @@ if picture_data:
     #リサイズ&圧縮
     width, height = img.size
     img_resize = img.resize((250, int(height / width * 250)))
-    img_p = img_resize.convert('P')
+#     img_p = img_resize.convert('P')
     #写真表示
-    st.image(img_p)
+    st.image(img_resize)
     # Save image in-memory
     b = BytesIO()
-    img_p.save(b, "PNG")
+    img_resize.save(b, "PNG")
     b.seek(0)
     fp = BufferedReader(b)
     
