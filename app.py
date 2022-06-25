@@ -59,7 +59,7 @@ if picture_data:
     #リサイズ&圧縮
     width, height = img.size
     img_resize = img.resize((250, int(height / width * 250)))
-    img_p = img_risize.convert('P')
+    img_p = img_resize.convert('P')
     #写真表示
     st.image(img_p)
     # Save image in-memory
