@@ -11,24 +11,9 @@ consumer_secret = st.secrets["API_SECRET"]
 access_token    = st.secrets["ACCESS_TOKEN"]
 access_token_secret = st.secrets["ACCESS_TOKEN_SECRET"]
 
-## create Client
-# def ClientInfo():
-#     client = tweepy.Client(bearer_token    = st.secrets["BEARER_TOKEN"],
-#                            consumer_key    = st.secrets["API_KEY"],
-#                            consumer_secret = st.secrets["API_SECRET"],
-#                            access_token    = st.secrets["ACCESS_TOKEN"],
-#                            access_token_secret = st.secrets["ACCESS_TOKEN_SECRET"],
-#                           )
-#     return client
-# client = ClientInfo()
-
 # OAuth process, using the keys and tokens
 auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-# auth = tweepy.OAuth1UserHandler(
-#     consumer_key, consumer_secret, access_token, access_token_secret
-# )
-# Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
 # Create a connection object.
