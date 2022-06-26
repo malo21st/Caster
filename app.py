@@ -38,7 +38,7 @@ df_index = df.index
 
 # Print results.
 st.title("Caster - tweet so easy -")
-picture_data = st.file_uploader("Select a picture :", type=['png', 'jpg', 'jpeg'])
+picture_data = st.file_uploader("🤳 Select a picture :", type=['png', 'jpg', 'jpeg'])
 if picture_data:
     img = Image.open(picture_data)
     #リサイズ&圧縮
@@ -54,11 +54,11 @@ if picture_data:
     
 st.dataframe(df)
 
-msg_idx = st.radio("Select tweet :", df_index, horizontal=True)
+msg_idx = st.radio("🔘 Select tweet :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
-message = st.text_area("Edit tweet :", value=init_msg, height=200)
+message = st.text_area("📑 Edit tweet :", value=init_msg, height=200)
 
-if st.button('🐤🐤 tweet 🐤🐤'):
+if st.button('🐤 tweet 🚀'):
     if picture_data:
         media = api.media_upload(filename="dummy.png", file=fp)
         api.update_status(message, media_ids=[media.media_id])
