@@ -6,6 +6,7 @@ import tweepy
 from io import BytesIO, BufferedReader
 from PIL import Image
 
+PIC_WIDTH = 500
 consumer_key    = st.secrets["API_KEY"]
 consumer_secret = st.secrets["API_SECRET"]
 access_token    = st.secrets["ACCESS_TOKEN"]
@@ -43,7 +44,7 @@ if picture_data:
     img = Image.open(picture_data)
     #リサイズ&圧縮
     width, height = img.size
-    img_resize = img.resize((250, int(height / width * 250)))
+    img_resize = img.resize((PIC_WIDTH, int(height / width * PIC_WIDTH)))
     #写真表示
     st.image(img_resize)
     # Save image in-memory
