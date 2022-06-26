@@ -58,7 +58,7 @@ msg_idx = st.radio("Select tweet :", df_index, horizontal=True)
 init_msg = f"{df.loc[msg_idx, 'title']}\n{df.loc[msg_idx, 'text']}\n\n{df.loc[msg_idx, 'tag']}"
 message = st.text_area("Edit tweet :", value=init_msg, height=200)
 
-if st.button('Cast tweet'):
+if st.button('TWEET'):
     if picture_data:
         media = api.media_upload(filename="dummy.png", file=fp)
         api.update_status(message, media_ids=[media.media_id])
